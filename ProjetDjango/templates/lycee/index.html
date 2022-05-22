@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'master.html' %}
+
+{% if liste %}
+    {% block title %}
+        Liste des BTS :
+    {% endblock %}
+    {% block content %}
+        <div class="container">
+            {% for cursus in liste %}
+                <div class="row">
+                    <div>
+                        <button>
+                            <a href="cursus/{{ cursus.id }}">{{ cursus.name }}</a>
+                        </button>
+                        <button>
+                            <a href="http://localhost:8000/lycee/cursuscall/{{cursus.id}}">Call of roll</a>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="container">
+                <div class="row">
+                    <p class="text-center"><strong><a href="/lycee/student/create">Create Student</a></strong></p>
+                </div>
+                <div class="row">
+                    <p class="text-center"><strong><a href="/lycee/presence/create">Create Particular Call</a></strong></p>
+                </div>
+                <div class="row">
+                    <p class="text-center"><strong><a href="/lycee/presence">All CallOfRoll</a></strong></p>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% else %}
+    <p>No cursus to show.</p>
+{% endif %}
+</body>
+</html>

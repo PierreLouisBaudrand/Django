@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'master.html' %}
+
+{% if liste %}
+    {% block title %}
+        Détail de l'étudiant :
+    {% endblock %}
+    {% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h3>{{ liste.first_name }}.{{ liste.last_name }}</h3>
+                    <li>date de naissance : {{ liste.birth_date }}</li>
+                    <li>numéro de téléphone : {{ liste.phone }}</li>
+                    <li>email : {{ liste.email }}</li>
+                    <li>cursus : {{ liste.cursus }}</li>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <a href=http://localhost:8000/lycee/student/edit/{{ liste.id }}><strong>edit student</strong></a>
+        </div>
+    {% endblock %}
+{% else %}
+    <p>No student to show.</p>
+{% endif %}
+</body>
+</html>

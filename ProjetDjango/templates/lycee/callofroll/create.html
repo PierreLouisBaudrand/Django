@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'master.html' %}
+
+{% if liste %}
+    {% block title %}
+        detail of a particular call
+    {% endblock %}
+    {% block content %}
+        <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="boutons">
+            <button class="button radius alert left" type="cancel"><a href="{% url 'index' %}">Cancel</a></button>
+            <button class="button radius success right" type="submit">Submit</button>
+        </div>
+        </form>
+    {% endblock %}
+{% endif %}
+</body>
+</html>
